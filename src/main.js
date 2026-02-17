@@ -3,11 +3,15 @@ import { GameConfig } from './core/GameConfig.js';
 import { eventBus, Events } from './core/EventBus.js';
 import { gameState } from './core/GameState.js';
 import { initAudioBridge } from './audio/AudioBridge.js';
+import { initPlayFun } from './playfun.js';
 
 const game = new Phaser.Game(GameConfig);
 
 // Initialize audio event bridge (connects EventBus events to AudioManager)
 initAudioBridge();
+
+// Initialize Play.fun SDK
+initPlayFun().catch(err => console.warn('Play.fun init failed:', err));
 
 // Expose for Playwright testing
 window.__GAME__ = game;
