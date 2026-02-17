@@ -12,8 +12,8 @@ export async function initPlayFun() {
     console.warn('Play.fun SDK not loaded');
     return;
   }
-  sdk = new SDKClass({ gameId: GAME_ID, ui: { usePointsWidget: true } });
-  await sdk.init();
+  sdk = new SDKClass({ ui: { usePointsWidget: true } });
+  await sdk.init({ gameId: GAME_ID });
   initialized = true;
 
   // Track funding changes as points
